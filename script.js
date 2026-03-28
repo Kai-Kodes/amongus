@@ -2,14 +2,8 @@ let currentSceneIndex = 1;
 const totalScenes = 7;
 let voteInterval = null;
 
-// Parse URL params
-const urlParams = new URLSearchParams(window.location.search);
-const toName = urlParams.get('to') || 'Crewmate';
-
-// Inject names dynamically
-document.querySelectorAll('.inject-name').forEach(el => {
-    el.textContent = toName;
-});
+// We will inject the names dynamically after fetching data.json
+let targetName = 'Crewmate';
 
 function initSetup() {
     const loaderBar = document.querySelector('.loader-bar');
@@ -152,14 +146,29 @@ function shareUrl() {
     });
 }
 
-// Ensure initSetup only runs once the scene is active
 let setupInitialized = false;
-document.addEventListener("DOMContentLoaded", () => {
-    if (!setupInitialized) { setupInitialized = true; initSetup(); }
-});
+
+function loadDataAndInitialize() {
+    if (setupInitialized) return;
+    setupInitialized = true;
+    
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            targetName = data.targetName || 'Crewmate';
+            document.querySelectorAll('.inject-name').forEach(el => el.textContent = targetName);
+            initSetup();
+        })
+        .catch(err => {
+            console.error('Error loading data.json:', err);
+            document.querySelectorAll('.inject-name').forEach(el => el.textContent = targetName);
+            initSetup();
+        });
+}
+
+document.addEventListener("DOMContentLoaded", loadDataAndInitialize);
 if (document.readyState === "complete" || document.readyState === "interactive") {
-    // Fallback if event already fired
     setTimeout(() => {
-        if (!setupInitialized && currentSceneIndex === 1) { setupInitialized = true; initSetup(); }
+        if (!setupInitialized && currentSceneIndex === 1) { loadDataAndInitialize(); }
     }, 100);
 }
