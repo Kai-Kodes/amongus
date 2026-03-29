@@ -20,7 +20,7 @@
         <div class="scene active" id="scene-1">
             <div class="bg-layer bg-stars"></div>
             <div class="content fade-in text-center">
-                <img src="res/giphy.gif" alt="Meeting" class="gif-meeting bounce-in delay-05">
+                <img src="res/among-us-emergency.gif" alt="Meeting" class="gif-meeting bounce-in delay-05">
                 <h1 class="glitch delay-1" data-text="EMERGENCY MEETING CALLED">EMERGENCY MEETING CALLED</h1>
                 <p class="typewriter-text delay-2 subtext text-red mt-2">Suspicious behavior detected.</p>
                 <p class="typewriter-text delay-3 subtext text-red">Compiling evidence against <span class="inject-name">Name</span>...</p>
@@ -119,12 +119,12 @@
         <!-- STATE 4: ELIMINATION ("Climax") -->
         <div class="scene" id="scene-4">
             <div class="bg-layer bg-intense-red"></div>
-            <div class="content text-center center-abs">
-                <img src="res/among-us-gif-31.gif" alt="Kill" class="gif-kill">
+            <div class="content text-center center-abs" style="overflow: visible;">
+                <img src="res/blue.png" alt="Ejected" class="ejected-crewmate">
                 
-                <div style="min-height: 120px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%;">
-                    <h1 class="eliminated-text type-fast mt-3"><span class="inject-name">Name</span> has been ejected.</h1>
-                    <h2 class="eliminated-subtext" id="impostor-text" style="opacity: 0; transition: opacity 0.5s ease; margin-top: 1rem;"><span class="inject-name">Name</span> was NOT the impostor.</h2>
+                <div style="min-height: 120px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; z-index: 5;">
+                    <h1 class="eliminated-text mt-3" id="eject-text-1"></h1>
+                    <h2 class="eliminated-subtext text-white" id="eject-text-2" style="margin-top: 1rem;"></h2>
                 </div>
             </div>
         </div>

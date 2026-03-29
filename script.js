@@ -116,22 +116,24 @@ function handleSceneSpecifics(index) {
     }
 
     if (index === 4) {
-        // Elimination auto-progress
-        const impostorText = document.getElementById('impostor-text');
-        const gifKill = document.querySelector('.gif-kill');
-        
-        setTimeout(() => {
-            if (gifKill) {
-                gifKill.style.transition = 'opacity 0.5s';
-                gifKill.style.opacity = '0';
-            }
-            if(impostorText) impostorText.style.opacity = '1';
-        }, 1500);
+        const line1 = document.getElementById('eject-text-1');
+        const line2 = document.getElementById('eject-text-2');
+        const text1Output = `${targetName} has been ejected.`;
+        const text2Output = `${targetName} was NOT the impostor.`;
 
-        // Auto transition to Scan Result (Scene 5) after 4 seconds total
+        // Start typing after a short delay
         setTimeout(() => {
-            nextScene();
-        }, 4000);
+            typeWriter(line1, text1Output, 50, () => {
+                setTimeout(() => {
+                    typeWriter(line2, text2Output, 50, () => {
+                        // After line 2 finishes, wait 2.5 seconds then transition
+                        setTimeout(() => {
+                            nextScene();
+                        }, 2500);
+                    });
+                }, 800);
+            });
+        }, 800);
     }
     
     if (index === 5) {
@@ -176,4 +178,20 @@ if (document.readyState === "complete" || document.readyState === "interactive")
     setTimeout(() => {
         if (!setupInitialized && currentSceneIndex === 1) { loadDataAndInitialize(); }
     }, 100);
+}
+
+function typeWriter(element, text, speed, callback) {
+    if(!element) return;
+    let i = 0;
+    element.textContent = "";
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        } else if (callback) {
+            callback();
+        }
+    }
+    type();
 }

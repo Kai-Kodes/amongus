@@ -162,6 +162,12 @@ p { font-size: 1.2rem; line-height: 1.6; }
 .gif-meeting { width: 220px; object-fit: contain; margin-bottom: 1rem;}
 .group-img { width: 300px; object-fit: contain; margin-bottom: -2rem; opacity: 0.9;}
 .gif-kill { width: 320px; max-width: 90%; object-fit: contain; }
+.ejected-crewmate { position: absolute; top: 40%; left: -30%; width: 150px; object-fit: contain; z-index: 1; }
+.scene.active .ejected-crewmate { animation: ejectionFly 6s linear forwards; }
+@keyframes ejectionFly {
+    0% { left: -30%; transform: rotate(-20deg); }
+    100% { left: 120%; transform: rotate(700deg); }
+}
 .couple-img { width: 280px; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0,0,0,0.5)); margin-bottom: 1rem;}
 .character { width: 180px; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0,204,0,0.5)); }
 
