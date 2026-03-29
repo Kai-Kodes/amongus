@@ -17,6 +17,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { overflow: hidden; touch-action: none; }
 body {
     background-color: var(--bg-dark);
     color: white;
@@ -46,7 +47,7 @@ body {
 .bg-minimal { background: var(--bg-minimal); }
 
 /* Layouts */
-#app { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;}
+#app { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
 
 .scene {
     position: absolute; top:0; left:0; right:0; bottom:0;
