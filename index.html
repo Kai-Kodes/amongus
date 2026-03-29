@@ -63,7 +63,7 @@
                         <span class="chat-text">kinda sus</span>
                     </div>
                 </div>
-                <div class="chat-msg align-right delay-chat-4">
+                <div class="chat-msg align-left delay-chat-4">
                     <div class="chat-bubble text-right">
                         <span class="chat-name">green</span>
                         <span class="chat-text">just vote already</span>
@@ -122,8 +122,10 @@
             <div class="content text-center center-abs">
                 <img src="res/among-us-gif-31.gif" alt="Kill" class="gif-kill">
                 
-                <h1 class="eliminated-text type-fast mt-3"><span class="inject-name">Name</span> has been ejected.</h1>
-                <h2 class="eliminated-subtext delay-3 type-reveal hidden" id="impostor-text"><span class="inject-name">Name</span> was NOT the impostor.</h2>
+                <div style="min-height: 120px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%;">
+                    <h1 class="eliminated-text type-fast mt-3"><span class="inject-name">Name</span> has been ejected.</h1>
+                    <h2 class="eliminated-subtext" id="impostor-text" style="opacity: 0; transition: opacity 0.5s ease; margin-top: 1rem;"><span class="inject-name">Name</span> was NOT the impostor.</h2>
+                </div>
             </div>
         </div>
 
@@ -172,7 +174,6 @@
                 <p class="footer-text mt-4 text-muted">Task remaining: keep being my friend.</p>
                 
                 <div class="actions mt-4">
-                    <button class="btn btn-success" onclick="shareUrl()">Share</button>
                     <button class="btn btn-outline text-white" onclick="location.reload()">Replay</button>
                 </div>
             </div>

@@ -118,9 +118,14 @@ function handleSceneSpecifics(index) {
     if (index === 4) {
         // Elimination auto-progress
         const impostorText = document.getElementById('impostor-text');
+        const gifKill = document.querySelector('.gif-kill');
         
         setTimeout(() => {
-            if(impostorText) impostorText.classList.remove('hidden');
+            if (gifKill) {
+                gifKill.style.transition = 'opacity 0.5s';
+                gifKill.style.opacity = '0';
+            }
+            if(impostorText) impostorText.style.opacity = '1';
         }, 1500);
 
         // Auto transition to Scan Result (Scene 5) after 4 seconds total

@@ -106,8 +106,8 @@ p { font-size: 1.2rem; line-height: 1.6; }
 .decor-bottom-right { bottom: 20px; right: 20px; }
 .decor-bottom-left { bottom: 20px; left: 20px; }
 
-.fake-chat-log { position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 1rem; z-index: 20; font-family: var(--font-ui); width: 320px; pointer-events: none; }
-.chat-msg { display: flex; align-items: center; gap: 0.5rem; opacity: 0; transform: translateY(10px); margin: 0; }
+.fake-chat-log { position: absolute; top: 20px; right: 20px; display: grid; z-index: 20; font-family: var(--font-ui); width: 320px; pointer-events: none; }
+.chat-msg { grid-area: 1 / 1; display: flex; align-items: center; gap: 0.5rem; opacity: 0; transform: translateY(10px); margin: 0; }
 .align-left { flex-direction: row; }
 .align-right { flex-direction: row; justify-content: flex-end; }
 .chat-avatar { width: 45px; height: 45px; object-fit: contain; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8)); }
@@ -115,11 +115,17 @@ p { font-size: 1.2rem; line-height: 1.6; }
 .chat-name { font-size: 0.85rem; color: #555; font-weight: bold; margin-bottom: 0.2rem; }
 .chat-text { font-size: 1.05rem; font-weight: 500; }
 .text-right { text-align: right; }
-.scene.active .delay-chat-1 { animation: chatPop 0.4s forwards 2.0s; }
-.scene.active .delay-chat-2 { animation: chatPop 0.4s forwards 4.0s; }
-.scene.active .delay-chat-3 { animation: chatPop 0.4s forwards 6.0s; }
+.scene.active .delay-chat-1 { animation: chatPopFade 2.0s forwards 2.0s; }
+.scene.active .delay-chat-2 { animation: chatPopFade 2.0s forwards 4.0s; }
+.scene.active .delay-chat-3 { animation: chatPopFade 2.0s forwards 6.0s; }
 .scene.active .delay-chat-4 { animation: chatPop 0.4s forwards 8.0s; }
 @keyframes chatPop { to { opacity: 1; transform: translateY(0); } }
+@keyframes chatPopFade { 
+    0% { opacity: 0; transform: translateY(10px); } 
+    10% { opacity: 1; transform: translateY(0); } 
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); } 
+}
 
 /* Voting Panel & Tension Overlay */
 .voting-panel {
