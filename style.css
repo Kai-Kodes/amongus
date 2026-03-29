@@ -118,7 +118,7 @@ p { font-size: 1.2rem; line-height: 1.6; }
 .scene.active .delay-chat-1 { animation: chatPopFade 2.0s forwards 2.0s; }
 .scene.active .delay-chat-2 { animation: chatPopFade 2.0s forwards 4.0s; }
 .scene.active .delay-chat-3 { animation: chatPopFade 2.0s forwards 6.0s; }
-.scene.active .delay-chat-4 { animation: chatPop 0.4s forwards 8.0s; }
+.scene.active .delay-chat-4 { animation: chatPopFade 4.0s forwards 8.0s; }
 @keyframes chatPop { to { opacity: 1; transform: translateY(0); } }
 @keyframes chatPopFade { 
     0% { opacity: 0; transform: translateY(10px); } 
